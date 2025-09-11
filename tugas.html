@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+
 <html>
   <head>
     <meta charset="utf-8" />
@@ -10,7 +7,7 @@
     <title>Tugas Kalkulator</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./output.css" />
+    <link rel="stylesheet" href="./src/output.css" />
   </head>
   <body>
     <header class="bg-sky-100">
@@ -20,14 +17,14 @@
       >
         <!-- Logo -->
         <span class="text-2xl font-bold">
-          <span class="text-sky-300">Verdy</span
-          ><span class="text-gray-700">Prajna</span>
+          <span class="text-sky-300">Verr</span
+          ><span class="text-gray-700">prajna</span>
         </span>
 
         <!-- Menu Desktop -->
         <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-8">
           <a
-            href="#home"
+            href="index.html"
             class="text-sm font-semibold text-gray-700 hover:text-gray-900"
             >Home</a
           >
@@ -120,24 +117,9 @@
                 <div class="-my-6 divide-y divide-white/10">
                   <div class="space-y-2 py-6">
                     <a
-                      href="#home"
+                      href="index.html"
                       class="block rounded-lg px-3 py-2 text-base font-semibold text-gray-700 hover:bg-gray-950/5"
                       >Home</a
-                    >
-                    <a
-                      href="#projects"
-                      class="block rounded-lg px-3 py-2 text-base font-semibold text-gray-700 hover:bg-gray-950/5"
-                      >Projects</a
-                    >
-                    <a
-                      href="#contact"
-                      class="block rounded-lg px-3 py-2 text-base font-semibold text-gray-700 hover:bg-gray-950/5"
-                      >Contact</a
-                    >
-                    <a
-                      href="tugas.html"
-                      class="block rounded-lg px-3 py-2 text-base font-semibold text-gray-700 hover:bg-gray-950/5"
-                      >Homework</a
                     >
                   </div>
                 </div>
@@ -147,7 +129,240 @@
         </dialog>
       </el-dialog>
     </header>
+    <body class="bg-gray-50 text-gray-800 antialiased">
+  <main class="min-h-screen flex items-center justify-center p-6">
+    <section class="w-full max-w-4xl bg-white rounded-2xl shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-2">
+      <!-- Left: Pilih Bangun & Satuan -->
+      <div class="p-6 border-b md:border-b-0 md:border-r border-gray-100">
+        <h2 class="text-xl font-semibold mb-4">1. Pilih Bangun Datar</h2>
 
-    <script src="" async defer></script>
+        <label class="block text-sm font-medium text-gray-600">Bangun</label>
+        <select id="shapeSelect" class="mt-2 w-full rounded-lg border p-2">
+          <option value="trapezoid">Trapesium</option>
+          <option value="rectangle">Persegi Panjang</option>
+          <option value="triangle">Segitiga</option>
+          <option value="parallelogram">Jajaran Genjang</option>
+          <option value="circle">Lingkaran</option>
+          <option value="square">Persegi</option>
+        </select>
+
+        <label class="block text-sm font-medium text-gray-600 mt-6">Satuan Panjang</label>
+        <select id="unitSelect" class="mt-2 w-full rounded-lg border p-2">
+          <option value="cm">cm</option>
+          <option value="m">m</option>
+          <option value="mm">mm</option>
+        </select>
+
+        <p class="mt-4 text-sm text-gray-500">
+          Hasil luas akan otomatis menggunakan <strong>satuan pangkat dua</strong>
+          (misal <code>cm²</code>, <code>m²</code>).
+        </p>
+      </div>
+
+      <!-- Right: Isi Parameter & Control -->
+      <div class="p-6">
+        <h2 class="text-xl font-semibold mb-4">2. Isi Parameter</h2>
+
+        <form id="paramsForm" class="space-y-4">
+          <!-- Dynamic parameter fields will be injected here -->
+          <div id="paramFields" class="space-y-3">
+            <!-- default for trapesium -->
+            <div>
+              <label class="block text-sm text-gray-600">Sisi Sejajar 1 (a)</label>
+              <input id="a" type="number" min="0" step="any" placeholder="contoh: 10" class="mt-1 w-full rounded-lg border p-2" />
+            </div>
+
+            <div>
+              <label class="block text-sm text-gray-600">Sisi Sejajar 2 (b)</label>
+              <input id="b" type="number" min="0" step="any" placeholder="contoh: 8" class="mt-1 w-full rounded-lg border p-2" />
+            </div>
+
+            <div>
+              <label class="block text-sm text-gray-600">Tinggi (t)</label>
+              <input id="t" type="number" min="0" step="any" placeholder="contoh: 4" class="mt-1 w-full rounded-lg border p-2" />
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="flex items-center gap-3 mt-2">
+            <button id="calcBtn" type="button" class="px-5 py-3 bg-sky-300 text-white rounded-lg font-semibold hover:bg-sky-400 transition">
+              Hitung Luas
+            </button>
+            <button id="resetBtn" type="button" class="px-4 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition">
+              Reset
+            </button>
+          </div>
+        </form>
+
+        <!-- Result Card -->
+        <div id="resultCard" class="mt-6 p-4 rounded-lg border border-gray-100 bg-gray-50 hidden">
+          <h3 class="text-sm text-gray-600">Hasil</h3>
+          <p id="resultText" class="mt-2 text-2xl font-bold text-gray-900">—</p>
+          <p id="formulaText" class="mt-1 text-sm text-gray-500"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Script: Dynamic fields + kalkulasi -->
+  <script>
+    (function () {
+      const shapeSelect = document.getElementById('shapeSelect');
+      const unitSelect = document.getElementById('unitSelect');
+      const paramFields = document.getElementById('paramFields');
+      const calcBtn = document.getElementById('calcBtn');
+      const resetBtn = document.getElementById('resetBtn');
+      const resultCard = document.getElementById('resultCard');
+      const resultText = document.getElementById('resultText');
+      const formulaText = document.getElementById('formulaText');
+
+      // Helper: buat input field
+      function fieldHTML(id, label, placeholder = '') {
+        return `
+          <div>
+            <label class="block text-sm text-gray-600">${label}</label>
+            <input id="${id}" type="number" min="0" step="any" placeholder="${placeholder}" class="mt-1 w-full rounded-lg border p-2" />
+          </div>
+        `;
+      }
+
+      // Atur fields sesuai shape
+      function renderFields(shape) {
+        let html = '';
+        switch (shape) {
+          case 'trapezoid':
+            html += fieldHTML('a', 'Sisi Sejajar 1 (a)', 'contoh: 10');
+            html += fieldHTML('b', 'Sisi Sejajar 2 (b)', 'contoh: 8');
+            html += fieldHTML('t', 'Tinggi (t)', 'contoh: 4');
+            break;
+
+          case 'rectangle':
+            html += fieldHTML('length', 'Panjang (p)', 'contoh: 10');
+            html += fieldHTML('width', 'Lebar (l)', 'contoh: 5');
+            break;
+
+          case 'triangle':
+            html += fieldHTML('base', 'Alas (a)', 'contoh: 8');
+            html += fieldHTML('height', 'Tinggi (t)', 'contoh: 4');
+            break;
+
+          case 'parallelogram':
+            html += fieldHTML('base', 'Alas (a)', 'contoh: 10');
+            html += fieldHTML('height', 'Tinggi (t)', 'contoh: 5');
+            break;
+
+          case 'circle':
+            html += fieldHTML('radius', 'Jari-jari (r)', 'contoh: 7');
+            break;
+
+          case 'square':
+            html += fieldHTML('side', 'Sisi (s)', 'contoh: 6');
+            break;
+
+          default:
+            html += '<p class="text-sm text-gray-500">Pilih bangun datar.</p>';
+        }
+        paramFields.innerHTML = html;
+      }
+
+      // Baca nilai aman (number) dari input id
+      function val(id) {
+        const el = document.getElementById(id);
+        if (!el) return NaN;
+        const v = parseFloat(el.value);
+        return isFinite(v) ? v : NaN;
+      }
+
+      // Hitung luas sesuai shape
+      function calculate(shape) {
+        const unit = unitSelect.value;
+        let area = NaN;
+        let formula = '';
+
+        switch (shape) {
+          case 'trapezoid': {
+            const a = val('a'), b = val('b'), t = val('t');
+            if ([a,b,t].some(isNaN)) return { area: NaN, formula: '' };
+            area = ((a + b) / 2) * t;
+            formula = `L = ((a + b) / 2) × t = ((${a} + ${b}) / 2) × ${t} = ${area}`;
+            break;
+          }
+
+          case 'rectangle': {
+            const p = val('length'), l = val('width');
+            if ([p,l].some(isNaN)) return { area: NaN, formula: '' };
+            area = p * l;
+            formula = `L = p × l = ${p} × ${l} = ${area}`;
+            break;
+          }
+
+          case 'triangle': {
+            const a = val('base'), t = val('height');
+            if ([a,t].some(isNaN)) return { area: NaN, formula: '' };
+            area = (a * t) / 2;
+            formula = `L = (a × t) / 2 = (${a} × ${t}) / 2 = ${area}`;
+            break;
+          }
+
+          case 'parallelogram': {
+            const a = val('base'), t = val('height');
+            if ([a,t].some(isNaN)) return { area: NaN, formula: '' };
+            area = a * t;
+            formula = `L = a × t = ${a} × ${t} = ${area}`;
+            break;
+          }
+
+          case 'circle': {
+            const r = val('radius');
+            if (isNaN(r)) return { area: NaN, formula: '' };
+            area = Math.PI * r * r;
+            area = Math.round(area * 1000) / 1000; // 3 decimals
+            formula = `L = π × r² = π × ${r}² ≈ ${area}`;
+            break;
+          }
+
+          case 'square': {
+            const s = val('side');
+            if (isNaN(s)) return { area: NaN, formula: '' };
+            area = s * s;
+            formula = `L = s² = ${s}² = ${area}`;
+            break;
+          }
+        }
+
+        return { area, formula, unit };
+      }
+
+      // Event handlers
+      shapeSelect.addEventListener('change', () => {
+        renderFields(shapeSelect.value);
+        resultCard.classList.add('hidden'); // sembunyikan hasil saat ganti shape
+      });
+
+      calcBtn.addEventListener('click', () => {
+        const shape = shapeSelect.value;
+        const { area, formula, unit } = calculate(shape);
+        if (isNaN(area)) {
+          alert('Mohon isi semua parameter dengan benar (angka positif).');
+          return;
+        }
+        // Format result (jika integer tampil bersih)
+        const formatted = Number.isInteger(area) ? area : (Math.round(area * 1000) / 1000);
+        resultText.textContent = `${formatted} ${unit}²`;
+        formulaText.textContent = formula;
+        resultCard.classList.remove('hidden');
+      });
+
+      resetBtn.addEventListener('click', () => {
+        // clear inputs
+        const inputs = paramFields.querySelectorAll('input');
+        inputs.forEach(i => i.value = '');
+        resultCard.classList.add('hidden');
+      });
+
+      // Inisialisasi awal
+      renderFields(shapeSelect.value);
+    })();
+  </script>
   </body>
-</html>
+</html> 

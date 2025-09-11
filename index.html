@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Portfolio</title>
     <link href="./src/output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
     <style>
       html {
         scroll-behavior: smooth;
@@ -13,8 +18,6 @@
   </head>
   <body class="bg-gray-500 text-gray-800">
     <!-- Navbar -->
-    <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
     <header class="bg-sky-100">
       <nav
         aria-label="Global"
@@ -22,7 +25,7 @@
       >
         <!-- Logo -->
         <span class="text-2xl font-bold">
-          <span class="text-sky-300">Verdy</span
+          <span class="text-sky-300">Verr</span
           ><span class="text-gray-700">Prajna</span>
         </span>
 
@@ -200,15 +203,19 @@
             class="bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden"
           >
             <img
-              src="https://via.placeholder.com/600x400"
+              src="Project 1.png"
               alt="Project 1"
               class="w-full h-48 object-cover"
             />
             <div class="p-4">
-              <h4 class="font-bold text-xl mb-2">Project One</h4>
-              <p class="text-gray-600">
-                A brief description of the project goes here.
-              </p>
+              <h4 class="font-bold text-xl mb-2">Gallery foto</h4>
+              <p class="text-gray-600">Beberapa foto yang saya ambil sendiri</p>
+              <a
+                href="gallery.html"
+                class="mt-4 inline-block bg-sky-300 text-white px-4 py-2 rounded hover:bg-sky-400"
+              >
+                Lihat Gallery
+              </a>
             </div>
           </div>
           <!-- Project Card -->
@@ -216,15 +223,43 @@
             class="bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden"
           >
             <img
-              src="https://via.placeholder.com/600x400"
+              src="Project 2.png"
+              alt="Project 1"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h4 class="font-bold text-xl mb-2">Short Film - Murid Kual</h4>
+              <p class="text-gray-600">
+                Sebuah Short Film yang saya buat bersama teman-teman sekolah.
+              </p>
+              <button
+                onclick="openVideo('https://www.youtube.com/embed/sEa0XO3fqRU?si=9QJV5Mnizl7gPBff')"
+                class="mt-4 inline-block bg-sky-300 text-white px-4 py-2 rounded hover:bg-sky-400"
+              >
+                Tonton Demo
+              </button>
+            </div>
+          </div>
+          <!-- Project Card -->
+          <div
+            class="bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden"
+          >
+            <img
+              src="Project 3.png"
               alt="Project 2"
               class="w-full h-48 object-cover"
             />
             <div class="p-4">
-              <h4 class="font-bold text-xl mb-2">Project Two</h4>
+              <h4 class="font-bold text-xl mb-2">Dokumentasi Pengabenan</h4>
               <p class="text-gray-600">
-                A brief description of the project goes here.
+                Dokumentasi pengabenan keluarga dekat saya di Bali.
               </p>
+              <button
+                onclick="openVideo('https://www.youtube.com/embed/1FdrtSY9LLQ?si=67RJXH0-Zfye_HIn')"
+                class="mt-4 inline-block bg-sky-300 text-white px-4 py-2 rounded hover:bg-sky-400"
+              >
+                Tonton Demo
+              </button>
             </div>
           </div>
           <!-- Project Card -->
@@ -232,15 +267,21 @@
             class="bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden"
           >
             <img
-              src="https://via.placeholder.com/600x400"
+              src="Project 4.png"
               alt="Project 3"
               class="w-full h-48 object-cover"
             />
             <div class="p-4">
-              <h4 class="font-bold text-xl mb-2">Project Three</h4>
+              <h4 class="font-bold text-xl mb-2">Video Wedding</h4>
               <p class="text-gray-600">
-                A brief description of the project goes here.
+                Video Wedding yang saya rekam dan edit sendiri.
               </p>
+              <button
+                onclick="openVideo('https://www.youtube.com/embed/1e6DJoZuH-w?si=gD2eyKZu8OrR6Acw')"
+                class="mt-4 inline-block bg-sky-300 text-white px-4 py-2 rounded hover:bg-sky-400"
+              >
+                Tonton Demo
+              </button>
             </div>
           </div>
         </div>
@@ -251,6 +292,9 @@
     <section id="contact" class="py-20 bg-white">
       <div class="max-w-4xl mx-auto px-4 text-center">
         <h3 class="text-3xl font-bold mb-8">Contact Me</h3>
+        <h2 class="text-2xl font-light mb-7">
+          Tertarik bekerja sama atau sekadar menyapa? Kirim email disini!
+        </h2>
         <form class="grid gap-4">
           <input
             type="text"
@@ -274,21 +318,87 @@
           </button>
         </form>
       </div>
+      <!-- Sosial Media -->
+      <div class="max-w-4xl mx-auto px-4 text-center mt-16">
+       <h1 class="text-1xl font-medium mb-8">Follow Me On Social Media</h1>
+      <div class="mt-8 flex justify-center space-x-6">
+        <!-- Instagram -->
+        <a
+          href="https://instagram.com/verrprajna"
+          target="_blank"
+          class="text-gray-500 hover:text-pink-500 text-2xl"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+
+        <!-- Twitter/X -->
+        <a
+          href="https://twitter.com/komang.verdy.5"
+          target="_blank"
+          class="text-gray-500 hover:text-blue-400 text-2xl"
+        >
+          <i class="fab fa-facebook"></i>
+        </a>
+
+        <!-- GitHub -->
+        <a
+          href="https://github.com/21chan"
+          target="_blank"
+          class="text-gray-500 hover:text-gray-900 text-2xl"
+        >
+          <i class="fab fa-github"></i>
+        </a>
+        <!-- GitHub -->
+        <a
+          href="https://www.youtube.com/channel/UClpgMqA-V3SVHW9MS7kW6lg"
+          target="_blank"
+          class="text-gray-500 hover:text-gray-900 text-2xl"
+        >
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-white text-center py-6 shadow-inner">
-      <p class="text-gray-600">© 2025 Your Name. All Rights Reserved.</p>
+      <p class="text-gray-600">© 2025 Verrprajna. All Rights Reserved.</p>
     </footer>
 
-    <!-- Smooth Scroll Script with Navbar Offset -->
+    <!-- Video Modal -->
+    <div
+      id="videoModal"
+      class="fixed inset-0 hidden bg-black bg-opacity-75 items-center justify-center z-50"
+    >
+      <div class="bg-black rounded-lg overflow-hidden w-full max-w-3xl">
+        <!-- Close Button -->
+        <div class="flex justify-end p-2">
+          <button onclick="closeVideo()" class="text-white text-2xl">
+            &times;
+          </button>
+        </div>
+        <!-- Video -->
+        <div class="aspect-video">
+          <iframe
+            id="youtubeFrame"
+            class="w-full h-96"
+            src=""
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
     <script>
+      // Smooth scroll dengan offset navbar
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
           const targetId = this.getAttribute("href");
           const target = document.querySelector(targetId);
-          const offset = document.querySelector("header").offsetHeight; // tinggi navbar
+          if (!target) return;
+          const offset = document.querySelector("header").offsetHeight;
           const targetPosition =
             target.getBoundingClientRect().top + window.scrollY - offset;
 
@@ -298,6 +408,23 @@
           });
         });
       });
+
+      // Modal YouTube
+      function openVideo(url) {
+        const modal = document.getElementById("videoModal");
+        const iframe = document.getElementById("youtubeFrame");
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        iframe.src = url + "?autoplay=1";
+      }
+
+      function closeVideo() {
+        const modal = document.getElementById("videoModal");
+        const iframe = document.getElementById("youtubeFrame");
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        iframe.src = ""; // reset biar berhenti
+      }
     </script>
   </body>
 </html>

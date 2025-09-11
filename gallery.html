@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo Gallery - Verdy Prajna</title>
+    <link href="./src/output.css" rel="stylesheet" />
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow">
+      <div
+        class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4"
+      >
+        <h1 class="text-2xl font-bold">
+          <span class="text-sky-300">Verdy</span>
+          <span class="text-gray-700">Gallery</span>
+        </h1>
+        <nav class="space-x-6">
+          <a href="index.html" class="text-gray-700 hover:text-sky-400">Home</a>
+          <a href="gallery.html" class="text-gray-700 hover:text-sky-400"
+            >Gallery</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- Gallery Section -->
+    <section class="max-w-7xl mx-auto px-6 py-12">
+      <h2 class="text-3xl font-bold text-center mb-10">Photo Showcase</h2>
+
+      <!-- Grid Foto -->
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <!-- Foto 1 -->
+        <div class="group relative cursor-pointer">
+          <img
+            src="Foto 1.jpg"
+            alt="Foto 1"
+            class="w-full h-60 object-cover rounded-lg shadow-lg transform group-hover:scale-105 transition"
+            onclick="openImage(this.src)"
+          />
+        </div>
+        <!-- Foto 2 -->
+        <div class="group relative cursor-pointer">
+          <img
+            src="Foto 2.jpg"
+            alt="Foto 2"
+            class="w-full h-60 object-cover rounded-lg shadow-lg transform group-hover:scale-105 transition"
+            onclick="openImage(this.src)"
+          />
+        </div>
+        <!-- Foto 3 -->
+        <div class="group relative cursor-pointer">
+          <img
+            src="Foto 3.jpg"
+            alt="Foto 3"
+            class="w-full h-full object-cover rounded-lg shadow-lg transform group-hover:scale-105 transition"
+            onclick="openImage(this.src)"
+          />
+        </div>
+        <!-- Foto 4 -->
+        <div class="group relative cursor-pointer">
+          <img
+            src="Foto 4.jpg"
+            alt="Foto 4"
+            class="w-full h-60 object-cover rounded-lg shadow-lg transform group-hover:scale-105 transition"
+            onclick="openImage(this.src)"
+          />
+        </div>
+        <!-- Tambah foto lainnya -->
+        <!-- Foto 4 -->
+        <div class="group relative cursor-pointer">
+          <img
+            src="Foto 5.jpg"
+            alt="Foto 4"
+            class="w-full h-60 object-cover rounded-lg shadow-lg transform group-hover:scale-105 transition"
+            onclick="openImage(this.src)"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal Popup Foto -->
+    <div
+      id="imageModal"
+      class="fixed inset-0 hidden bg-black bg-opacity-80 items-center justify-center z-50"
+    >
+      <div class="relative max-w-5xl w-full px-4">
+        <!-- Tombol Close -->
+        <button
+          onclick="closeImage()"
+          class="absolute top-2 right-4 text-white text-3xl font-bold"
+        >
+          &times;
+        </button>
+        <!-- Gambar -->
+        <img
+          id="modalImage"
+          src=""
+          class="w-full max-h-[90vh] object-contain rounded-lg"
+        />
+      </div>
+    </div>
+
+    <!-- Script Modal -->
+    <script>
+      function openImage(src) {
+        document.getElementById("modalImage").src = src;
+        document.getElementById("imageModal").classList.remove("hidden");
+        document.getElementById("imageModal").classList.add("flex");
+      }
+      function closeImage() {
+        document.getElementById("imageModal").classList.add("hidden");
+        document.getElementById("imageModal").classList.remove("flex");
+      }
+    </script>
+  </body>
+</html>
